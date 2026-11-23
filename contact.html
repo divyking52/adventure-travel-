@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact MERIDIAN Expeditions — build a custom adventure quote, reach our Leh, Zurich & Queenstown basecamps, or search our expedition FAQ." />
+  <title>Contact &amp; Trip Planner — MERIDIAN Expeditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/meridian.css" />
+  <style>
+    .planner-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+      gap: 1.6rem;
+      align-items: start;
+    }
+    .planner-panel { padding: clamp(1.6rem, 3vw, 2.4rem); }
+    .hq-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.3rem; margin-top: 2.2rem; }
+    .hq-card { padding: 1.65rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .faq-search-bar {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .faq-search-input {
+      flex: 1; min-width: 240px; max-width: 440px;
+      padding: 0.8rem 1.2rem; border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.66); backdrop-filter: blur(14px);
+      font-size: 0.94rem;
+    }
+    .faq-toggle-all[aria-expanded="true"] .label-expand,
+    .faq-toggle-all[aria-expanded="false"] .label-collapse { display: none; }
+    @media (max-width: 960px) {
+      .planner-split, .hq-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="contact">
+  <main id="main-content">
+    <section class="page-hero" data-cursor-theme="light">
+      <div class="page-hero-bg media-frame">
+        <img
+          src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=85"
+          alt="Starry alpine night sky over rugged snow-capped peaks"
+          fetchpriority="high"
+          width="1920"
+          height="1280"
+          data-fallback-title="EXPEDITION CONCIERGE"
+          data-fallback-bg="#252B32"
+        />
+      </div>
+      <div class="page-hero-scrim" aria-hidden="true"></div>
+      <div class="container">
+        <div class="page-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span>05 // 24-Hour Expedition Desk</span>
+            <h1 class="page-hero-title">START YOUR <span class="serif-accent">Expedition</span></h1>
+            <p class="page-hero-sub">
+              Configure a custom route, request private dates, or speak directly with our field architects in Leh, Zurich, or Queenstown.
+            </p>
+          </div>
+          <div class="page-hero-meta">
+            <span class="coord-tag" style="color: var(--butter);">DIRECT CONCIERGE</span>
+            <span style="font-size: 0.9rem; color: var(--cream);">expeditions@meridianwild.com</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; opacity: 0.8;">AVG RESPONSE · UNDER 4 HOURS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band section-band-rounded mesh-peach">
+      <div class="container">
+        <div class="planner-split">
+          <div class="glass-card planner-panel">
+            <div style="position:relative; z-index:2;">
+              <span class="coord-tag">CUSTOM ROUTE CONFIGURATOR</span>
+              <h2 class="display-title" style="font-size: clamp(2.4rem, 4.5vw, 3.8rem); margin: 0.35rem 0 1.4rem;">DESIGN YOUR <span class="serif-accent">Blueprint</span></h2>
+
+              <form id="contactPlannerForm" class="booking-grid">
+                <div class="field-group">
+                  <label for="cpDest">Primary Destination</label>
+                  <select id="cpDest" name="destination" class="field-input">
+                    <option value="Ladakh, India">Ladakh, India</option>
+                    <option value="Rishikesh, India">Rishikesh, India</option>
+                    <option value="Spiti Valley, India">Spiti Valley, India</option>
+                    <option value="Bali, Indonesia">Bali, Indonesia</option>
+                    <option value="Swiss Alps, Switzerland">Swiss Alps, Switzerland</option>
+                    <option value="Queenstown, New Zealand">Queenstown, New Zealand</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="cpSport">Primary Discipline</label>
+                  <select id="cpSport" name="sport" class="field-input">
+                    <option value="Mountain Trekking">Mountain Trekking</option>
+                    <option value="Skydiving">Skydiving</option>
+                    <option value="Scuba Diving">Scuba Diving</option>
+                    <option value="Rock Climbing">Rock Climbing</option>
+                    <option value="Paragliding">Paragliding</option>
+                    <option value="River Rafting">River Rafting</option>
+                    <option value="Desert Safari">Desert Safari</option>
+                    <option value="Camping & Hiking">Camping &amp; Hiking</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="cpPax">Explorers (<span id="cpPaxLabel">2</span>)</label>
+                  <input id="cpPax" name="pax" type="range" min="1" max="8" value="2" style="accent-color: var(--charcoal); margin-top: 0.6rem;" />
+                </div>
+                <div class="field-group">
+                  <label for="cpDays">Duration (<span id="cpDaysLabel">6</span> Days)</label>
+                  <input id="cpDays" name="days" type="range" min="3" max="14" value="6" style="accent-color: var(--charcoal); margin-top: 0.6rem;" />
+                </div>
+                <div class="field-group is-full">
+                  <label for="cpTier">Basecamp Comfort Tier</label>
+                  <select id="cpTier" name="tier" class="field-input">
+                    <option value="220">Basecamp Classic ($220 / explorer / day)</option>
+                    <option value="320" selected>Boutique Mountain Lodge ($320 / explorer / day)</option>
+                    <option value="490">Private Expedition &amp; Heli-Support ($490 / explorer / day)</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label for="cpName">Your Name</label>
+                  <input id="cpName" name="name" class="field-input" type="text" required placeholder="Ananya Deshmukh" autocomplete="name" />
+                </div>
+                <div class="field-group">
+                  <label for="cpEmail">Email Address</label>
+                  <input id="cpEmail" name="email" class="field-input" type="email" required placeholder="you@domain.com" autocomplete="email" />
+                </div>
+                <div class="field-group is-full">
+                  <label for="cpNotes">Route Notes or Multi-Sport Wishes</label>
+                  <textarea id="cpNotes" name="notes" class="field-input" rows="3" placeholder="Preferred month, fitness notes, photography add-ons..."></textarea>
+                </div>
+                <div class="field-group is-full">
+                  <button type="submit" class="btn btn-primary magnetic" style="width: 100%;">
+                    <span>Generate Custom Expedition Proposal</span><span class="btn-arrow" aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </form>
+
+              <div class="booking-receipt" id="contactReceipt" role="status" aria-live="polite">
+                <div class="coord-tag">PROPOSAL DISPATCHED · REF <span id="contactRef">MRD-000000</span></div>
+                <h3 class="display-title" style="font-size: 2.2rem;">YOUR ARCHITECT IS ON IT.</h3>
+                <p id="contactReceiptText" style="font-size: 0.96rem; color: var(--charcoal-soft);"></p>
+                <div><button type="button" class="btn btn-outline" id="contactResetBtn">Configure Another Route</button></div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="glass-card planner-panel" style="position: sticky; top: 6.5rem;">
+            <div style="position:relative; z-index:2; display:grid; gap:1.1rem;">
+              <span class="coord-tag">LIVE ESTIMATE SUMMARY</span>
+              <div class="display-title" style="font-size: clamp(3rem, 5vw, 4.4rem);" id="liveQuoteTotal">$3,840</div>
+              <div style="font-size: 0.88rem; color: var(--charcoal-soft);" id="liveQuoteDetail">2 Explorers · 6 Days · Boutique Mountain Lodge</div>
+              <div style="padding-top: 1rem; border-top: 1px solid var(--ink-border); display: grid; gap: 0.55rem; font-size: 0.9rem;">
+                <div><strong>Includes:</strong> Dedicated certified lead guide, all technical gear, satellite safety beacons, meals &amp; permits.</div>
+                <div><strong>Flexibility:</strong> Free itinerary adjustments and date transfers up to 30 days pre-departure.</div>
+              </div>
+              <div class="glass-pill" style="justify-content: center; background: rgba(245, 229, 165, 0.85);">NO DEPOSIT DUE TO RECEIVE BLUEPRINT</div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hq-grid">
+          <article class="glass-card hq-card">
+            <span class="coord-tag">HIMALAYAN DESK · <span data-tz="Asia/Kolkata">--:--</span></span>
+            <h3 class="display-title" style="font-size: 2rem;">Leh, Ladakh</h3>
+            <p style="font-size: 0.9rem; color: var(--charcoal-soft);">42 Changspa Ridge Road, Leh 194101, India · High-altitude trek &amp; Spiti overland operations.</p>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem;">+91 98104 42088</span>
+          </article>
+          <article class="glass-card hq-card">
+            <span class="coord-tag">ALPINE DESK · <span data-tz="Europe/Zurich">--:--</span></span>
+            <h3 class="display-title" style="font-size: 2rem;">Zurich, Switzerland</h3>
+            <p style="font-size: 0.9rem; color: var(--charcoal-soft);">Seefeldstrasse 88, 8008 Zürich · Swiss Alps, Dolomites climbing &amp; European concierge.</p>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem;">+41 44 580 2910</span>
+          </article>
+          <article class="glass-card hq-card">
+            <span class="coord-tag">PACIFIC DESK · <span data-tz="Pacific/Auckland">--:--</span></span>
+            <h3 class="display-title" style="font-size: 2rem;">Queenstown, NZ</h3>
+            <p style="font-size: 0.9rem; color: var(--charcoal-soft);">14 Shotover Terrace, Queenstown 9300 · Southern Alps heli-camp, skydiving &amp; Bali reefs.</p>
+            <span style="font-family: var(--font-mono); font-size: 0.76rem;">+64 3 442 8810</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band mesh-butter" aria-labelledby="contact-faq-heading">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="eyebrow"><span class="eyebrow-dot"></span>Field Briefing Archive</span>
+            <h2 id="contact-faq-heading" class="display-title section-heading">SEARCHABLE <span class="serif-accent">FAQ</span></h2>
+          </div>
+          <p class="section-intro">Filter common questions about packing, beginner coaching, weather contingencies, and flexible cancellations.</p>
+        </div>
+
+        <div class="faq-search-bar">
+          <label for="faqSearchInput" class="sr-only">Search frequently asked questions</label>
+          <input id="faqSearchInput" class="faq-search-input" type="search" placeholder="Search gear, beginners, safety, weather, cancellation..." />
+          <button type="button" class="btn btn-outline faq-toggle-all" id="contactFaqToggleAll" aria-expanded="false">
+            <span class="label-expand">Expand All</span>
+            <span class="label-collapse">Collapse All</span>
+          </button>
+        </div>
+
+        <div class="accordion-list" id="contactFaqList"></div>
+      </div>
+    </section>
+  </main>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script defer src="assets/meridian.js"></script>
+  <script>
+    document.addEventListener('meridian:ready', () => {
+      // Live Quote Estimator
+      const paxEl = document.getElementById('cpPax');
+      const daysEl = document.getElementById('cpDays');
+      const tierEl = document.getElementById('cpTier');
+      const totalEl = document.getElementById('liveQuoteTotal');
+      const detailEl = document.getElementById('liveQuoteDetail');
+
+      const updateQuote = () => {
+        const pax = Number(paxEl.value);
+        const days = Number(daysEl.value);
+        const rate = Number(tierEl.value);
+        document.getElementById('cpPaxLabel').textContent = String(pax);
+        document.getElementById('cpDaysLabel').textContent = String(days);
+        totalEl.textContent = `$${(pax * days * rate).toLocaleString()}`;
+        const tierName = tierEl.options[tierEl.selectedIndex].text.split(' (')[0];
+        detailEl.textContent = `${pax} ${pax === 1 ? 'Explorer' : 'Explorers'} · ${days} Days · ${tierName}`;
+      };
+      [paxEl, daysEl, tierEl].forEach((el) => el.addEventListener('input', updateQuote));
+      updateQuote();
+
+      const form = document.getElementById('contactPlannerForm');
+      const receipt = document.getElementById('contactReceipt');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const ref = 'MRD-' + Math.floor(100000 + Math.random() * 899999);
+        document.getElementById('contactRef').textContent = ref;
+        document.getElementById('contactReceiptText').textContent =
+          `Thank you, ${fd.get('name')}. We logged your custom ${fd.get('days')}-day ${fd.get('sport')} proposal for ${fd.get('destination')} (${fd.get('pax')} explorer(s), est. ${totalEl.textContent}) and sent a copy to ${fd.get('email')}.`;
+        form.style.display = 'none';
+        receipt.classList.add('is-visible');
+        window.MERIDIAN_UI.showToast(`Custom proposal ${ref} queued!`);
+      });
+      document.getElementById('contactResetBtn').addEventListener('click', () => {
+        form.reset();
+        updateQuote();
+        form.style.display = 'grid';
+        receipt.classList.remove('is-visible');
+      });
+
+      // Live Basecamp Local Clocks
+      const tickClocks = () => {
+        document.querySelectorAll('[data-tz]').forEach((el) => {
+          try {
+            el.textContent = new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date()) + ' LOCAL';
+          } catch {}
+        });
+      };
+      tickClocks();
+      setInterval(tickClocks, 30000);
+
+      // Searchable Native <details> FAQ Accordion
+      const faqList = document.getElementById('contactFaqList');
+      const toggleAll = document.getElementById('contactFaqToggleAll');
+      faqList.innerHTML = window.MERIDIAN_DATA.faqs.map((item, i) => `
+        <details class="faq-item" ${i === 0 ? 'open' : ''}>
+          <summary>${item.q}</summary>
+          <div class="faq-answer">${item.a}</div>
+        </details>
+      `).join('');
+
+      const syncFaqBtn = () => {
+        const items = Array.from(faqList.querySelectorAll(':scope > details:not([hidden])'));
+        toggleAll.setAttribute('aria-expanded', String(items.length > 0 && items.every((d) => d.open)));
+      };
+      toggleAll.addEventListener('click', () => {
+        const expand = toggleAll.getAttribute('aria-expanded') !== 'true';
+        faqList.querySelectorAll(':scope > details:not([hidden])').forEach((d) => { d.open = expand; });
+        syncFaqBtn();
+      });
+      faqList.addEventListener('toggle', syncFaqBtn, { capture: true });
+      syncFaqBtn();
+
+      document.getElementById('faqSearchInput').addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        faqList.querySelectorAll(':scope > details').forEach((d) => {
+          const match = !q || d.textContent.toLowerCase().includes(q);
+          d.hidden = !match;
+          if (q && match) d.open = true;
+        });
+        syncFaqBtn();
+      });
+    });
+  </script>
+</body>
+</html>

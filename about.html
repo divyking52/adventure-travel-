@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About MERIDIAN Expeditions — our mountain safety philosophy, certified IFMGA/PADI/IRF expedition guides, and Leave-No-Trace stewardship." />
+  <title>About Us — MERIDIAN Expeditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/meridian.css" />
+  <style>
+    .stats-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.15rem; margin-bottom: 2.5rem; }
+    .stat-glass { padding: 1.55rem 1.45rem; }
+    .stat-num { font-family: var(--font-display); font-size: clamp(3rem, 5.2vw, 4.6rem); font-weight: 900; line-height: 0.88; }
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.35rem; }
+    .pillar-card { padding: 1.9rem 1.7rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .guides-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.35rem; }
+    .guide-card { padding: 1.4rem; display: flex; flex-direction: column; gap: 1rem; }
+    .guide-avatar { width: 100%; aspect-ratio: 1 / 1.05; border-radius: 22px; overflow: hidden; }
+    .stages-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+    .stage-card { padding: 1.7rem 1.45rem; display: flex; flex-direction: column; gap: 0.7rem; }
+    @media (max-width: 1080px) {
+      .stats-row, .guides-grid, .stages-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pillars-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .stats-row, .guides-grid, .stages-grid, .pillars-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="about">
+  <main id="main-content">
+    <section class="page-hero" data-cursor-theme="light">
+      <div class="page-hero-bg media-frame">
+        <img
+          src="https://images.unsplash.com/photo-1752503650851-cbc3f8b00679?auto=format&fit=crop&w=1920&q=85"
+          alt="Dramatic mountain summits rising above golden dawn clouds"
+          fetchpriority="high"
+          width="1920"
+          height="1280"
+          data-fallback-title="THE MERIDIAN STANDARD"
+          data-fallback-bg="#C9BDEB"
+        />
+      </div>
+      <div class="page-hero-scrim" aria-hidden="true"></div>
+      <div class="container">
+        <div class="page-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span>04 // Expedition House Manifesto</span>
+            <h1 class="page-hero-title">WHY TRAVEL <span class="serif-accent">With Us</span></h1>
+            <p class="page-hero-sub">
+              Founded by Himalayan mountaineers and Swiss alpine guides, Meridian exists to craft unhurried, deeply safe wilderness journeys far beyond mass-tourism corridors.
+            </p>
+          </div>
+          <div class="page-hero-meta">
+            <span class="coord-tag" style="color: var(--butter);">FOUNDED 2019 · LEH &amp; ZURICH</span>
+            <span style="font-size: 0.9rem; color: var(--cream);">99.4% Verified Safety Record</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; opacity: 0.8;">100% LOCALLY OWNED CAMPS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band section-band-rounded mesh-lavender">
+      <div class="container">
+        <div class="stats-row">
+          <div class="glass-card stat-glass"><div class="stat-num">148+</div><div class="coord-tag" style="margin-top:0.4rem; color:var(--charcoal-soft);">Certified Expedition Leads</div></div>
+          <div class="glass-card stat-glass"><div class="stat-num">99.4%</div><div class="coord-tag" style="margin-top:0.4rem; color:var(--charcoal-soft);">Safety Benchmark</div></div>
+          <div class="glass-card stat-glass"><div class="stat-num">MAX 8</div><div class="coord-tag" style="margin-top:0.4rem; color:var(--charcoal-soft);">Explorers Per Roster</div></div>
+          <div class="glass-card stat-glass"><div class="stat-num">32</div><div class="coord-tag" style="margin-top:0.4rem; color:var(--charcoal-soft);">Regions Scouted</div></div>
+        </div>
+
+        <div class="pillars-grid reveal-grid">
+          <article class="glass-card pillar-card reveal-card"><span class="coord-tag">01 // LEADERSHIP</span><h2 class="display-title" style="font-size:2.1rem;">Expert Adventure Guides</h2><p style="color:var(--charcoal-soft); font-size:0.94rem;">Every trip is led by IFMGA mountaineers, PADI Master divers, or licensed tandem pilots who know each ridge and current intimately.</p></article>
+          <article class="glass-card pillar-card reveal-card"><span class="coord-tag">02 // CURATION</span><h2 class="display-title" style="font-size:2.1rem;">Handpicked Experiences</h2><p style="color:var(--charcoal-soft); font-size:0.94rem;">We scout remote valleys, dawn launch windows, and private basecamps personally — zero mass bus templates.</p></article>
+          <article class="glass-card pillar-card reveal-card"><span class="coord-tag">03 // INTIMACY</span><h2 class="display-title" style="font-size:2.1rem;">Small Group Adventures</h2><p style="color:var(--charcoal-soft); font-size:0.94rem;">Rosters capped at 6 to 10 explorers for rapid agility across technical terrain and lifelong expedition camaraderie.</p></article>
+          <article class="glass-card pillar-card reveal-card"><span class="coord-tag">04 // TELEMETRY</span><h2 class="display-title" style="font-size:2.1rem;">Safety-First Approach</h2><p style="color:var(--charcoal-soft); font-size:0.94rem;">Redundant Garmin satellite beacons, oxygen reserves above 3,800m, wilderness medics, and daily weather windows.</p></article>
+          <article class="glass-card pillar-card reveal-card"><span class="coord-tag">05 // TAILORING</span><h2 class="display-title" style="font-size:2.1rem;">Customized Itineraries</h2><p style="color:var(--charcoal-soft); font-size:0.94rem;">Combine regions, adjust elevation pacing, or build private multi-sport adventures crafted around your calendar.</p></article>
+          <article class="glass-card pillar-card reveal-card"><span class="coord-tag">06 // STEWARDSHIP</span><h2 class="display-title" style="font-size:2.1rem;">Local Experiences</h2><p style="color:var(--charcoal-soft); font-size:0.94rem;">We partner exclusively with indigenous porters, local mountain families, and conservation trusts to leave every valley stronger.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band mesh-glacier">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="eyebrow"><span class="eyebrow-dot"></span>Field Leadership Roster</span>
+            <h2 class="display-title section-heading">MEET YOUR <span class="serif-accent">Guides</span></h2>
+          </div>
+          <p class="section-intro">Experienced mountaineers, pilots, swiftwater leads, and marine biologists who turn daunting terrain into effortless clarity.</p>
+        </div>
+        <div class="guides-grid" id="guidesGrid"></div>
+      </div>
+    </section>
+
+    <section class="section-band mesh-butter">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="eyebrow"><span class="eyebrow-dot"></span>How Every Journey Unfolds</span>
+            <h2 class="display-title section-heading">FOUR STAGES OF <span class="serif-accent">Exploration</span></h2>
+          </div>
+          <p class="section-intro">From your very first route briefing to the analog film roll waiting in your inbox back home.</p>
+        </div>
+        <div class="stages-grid">
+          <article class="glass-card stage-card"><span class="display-title" style="font-size:3.2rem; opacity:0.28;">01</span><h3 class="display-title" style="font-size:2rem;">Discover</h3><p style="font-size:0.92rem; color:var(--charcoal-soft);">1-on-1 route consultation matching your ambitions with seasonal alpine, river, or reef windows.</p></article>
+          <article class="glass-card stage-card"><span class="display-title" style="font-size:3.2rem; opacity:0.28;">02</span><h3 class="display-title" style="font-size:2rem;">Prepare</h3><p style="font-size:0.92rem; color:var(--charcoal-soft);">8-week conditioning blueprint, personalized gear audit, and pre-departure call with your lead guide.</p></article>
+          <article class="glass-card stage-card"><span class="display-title" style="font-size:3.2rem; opacity:0.28;">03</span><h3 class="display-title" style="font-size:2rem;">Explore</h3><p style="font-size:0.92rem; color:var(--charcoal-soft);">Unhurried movement through wild landscapes with satellite telemetry and chef-run basecamps.</p></article>
+          <article class="glass-card stage-card"><span class="display-title" style="font-size:3.2rem; opacity:0.28;">04</span><h3 class="display-title" style="font-size:2rem;">Remember</h3><p style="font-size:0.92rem; color:var(--charcoal-soft);">Starlight camp circles, curated expedition photography archive, and carbon-positive trail stewardship.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script defer src="assets/meridian.js"></script>
+  <script>
+    document.addEventListener('meridian:ready', () => {
+      const grid = document.getElementById('guidesGrid');
+      grid.innerHTML = window.MERIDIAN_DATA.guides.map((g) => `
+        <article class="glass-card guide-card">
+          <div class="guide-avatar media-frame">
+            <img src="${g.avatar}" alt="Portrait of ${g.name}" loading="lazy" width="400" height="420" data-fallback-title="${g.name.toUpperCase()}" data-fallback-bg="#B9DDE8" />
+          </div>
+          <div style="position:relative; z-index:2;">
+            <span class="coord-tag" style="color: var(--charcoal-muted);">${g.base}</span>
+            <h3 class="display-title" style="font-size: 2rem; margin-top: 0.25rem;">${g.name}</h3>
+            <div style="font-size: 0.84rem; font-weight: 700; color: var(--charcoal); margin-top: 0.15rem;">${g.role}</div>
+            <div style="font-family: var(--font-mono); font-size: 0.66rem; color: var(--charcoal-muted); margin-top: 0.35rem;">${g.cert}</div>
+            <p style="font-size: 0.88rem; color: var(--charcoal-soft); margin-top: 0.6rem;">${g.bio}</p>
+          </div>
+        </article>
+      `).join('');
+      window.MERIDIAN_UI.attachImageHandlers(grid);
+    });
+  </script>
+</body>
+</html>

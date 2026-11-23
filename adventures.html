@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore all eight outdoor adventure disciplines with MERIDIAN — trekking, skydiving, scuba diving, rock climbing, paragliding, rafting, desert safari, and alpine camping." />
+  <title>Adventures — MERIDIAN Expeditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/meridian.css" />
+  <style>
+    .adv-catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+    .adv-detail-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .adv-detail-card.is-hidden { display: none; }
+    .adv-detail-media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .adv-detail-card:hover .adv-detail-media img { transform: scale(1.07); }
+    .adv-detail-badges {
+      position: absolute;
+      top: 1rem;
+      inset-inline: 1rem;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .adv-detail-body {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem 1.65rem 1.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .adv-spec-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--ink-border);
+      border-bottom: 1px solid var(--ink-border);
+    }
+    .adv-spec-cell {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal-muted);
+    }
+    .adv-spec-cell strong {
+      display: block;
+      margin-top: 0.16rem;
+      font-family: var(--font-sans);
+      font-size: 0.86rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--charcoal);
+    }
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+    .tier-card {
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .tier-pips { display: flex; gap: 0.35rem; }
+    .tier-pip { width: 22px; height: 6px; border-radius: 99px; background: rgba(37, 43, 50, 0.14); }
+    .tier-pip.is-on { background: var(--charcoal); }
+    @media (max-width: 980px) {
+      .adv-catalog-grid { grid-template-columns: 1fr; }
+      .tier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .tier-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="adventures">
+  <main id="main-content">
+    <section class="page-hero" data-cursor-theme="light">
+      <div class="page-hero-bg media-frame">
+        <img
+          src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1920&q=85"
+          alt="Hikers trekking along an alpine mountain trail toward snow-capped peaks"
+          fetchpriority="high"
+          width="1920"
+          height="1280"
+          data-fallback-title="EIGHT DISCIPLINES"
+          data-fallback-bg="#B9DDE8"
+        />
+      </div>
+      <div class="page-hero-scrim" aria-hidden="true"></div>
+      <div class="container">
+        <div class="page-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span>01 // Eight Disciplines of Motion</span>
+            <h1 class="page-hero-title">EXPLORE <span class="serif-accent">Adventures</span></h1>
+            <p class="page-hero-sub">
+              From 4,900-meter Himalayan ridge traverses to open-canopy freefalls and pelagic reef drifts — every discipline is led by certified specialists with all technical hardware included.
+            </p>
+          </div>
+          <div class="page-hero-meta">
+            <span class="coord-tag" style="color: var(--butter);">08 CORE DISCIPLINES</span>
+            <span style="font-size: 0.9rem; color: var(--cream);">1:4 Technical Guide Ratio</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; opacity: 0.8;">BEGINNER+ TO EXTREME TIERS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band section-band-rounded mesh-glacier">
+      <div class="outlined-watermark" style="top: 3%; left: -3%; font-size: clamp(6rem, 18vw, 17rem);" data-parallax-x="-120" aria-hidden="true">DISCIPLINES</div>
+      <div class="container">
+        <div class="filter-bar">
+          <div class="filter-chips" id="advFilterChips" role="group" aria-label="Filter disciplines by terrain">
+            <button type="button" class="filter-chip is-active" data-adv-filter="all">All Disciplines (08)</button>
+            <button type="button" class="filter-chip" data-adv-filter="mountain">Mountain &amp; Rock</button>
+            <button type="button" class="filter-chip" data-adv-filter="air">Air &amp; Sky</button>
+            <button type="button" class="filter-chip" data-adv-filter="water">Water &amp; Reef</button>
+            <button type="button" class="filter-chip" data-adv-filter="desert">Desert Overland</button>
+          </div>
+          <span class="coord-tag" id="advCountTag">SHOWING 08 OF 08 DISCIPLINES</span>
+        </div>
+
+        <div class="adv-catalog-grid reveal-grid" id="advCatalogGrid"></div>
+      </div>
+    </section>
+
+    <section class="section-band mesh-lavender">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="eyebrow"><span class="eyebrow-dot"></span>Difficulty &amp; Readiness Guide</span>
+            <h2 class="display-title section-heading">FIND YOUR <span class="serif-accent">Edge</span></h2>
+          </div>
+          <p class="section-intro">Every Meridian expedition clearly communicates physical output, altitude exposure, and technical coaching so first-timers and veteran athletes thrive side by side.</p>
+        </div>
+
+        <div class="tier-grid">
+          <article class="glass-card tier-card">
+            <div class="tier-pips"><span class="tier-pip is-on"></span><span class="tier-pip"></span><span class="tier-pip"></span><span class="tier-pip"></span></div>
+            <h3 class="display-title" style="font-size: 2rem;">Tier 01 · Beginner+</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-soft);">Zero prior technical skill required. Tandem paragliding, starlight desert overlands, and scenic valley hikes with full ground-school coaching.</p>
+          </article>
+          <article class="glass-card tier-card">
+            <div class="tier-pips"><span class="tier-pip is-on"></span><span class="tier-pip is-on"></span><span class="tier-pip"></span><span class="tier-pip"></span></div>
+            <h3 class="display-title" style="font-size: 2rem;">Tier 02 · Moderate</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-soft);">Active 4–6 hour movement days. Class-III/IV whitewater descents, drift scuba diving, and volcanic sunrise ascents.</p>
+          </article>
+          <article class="glass-card tier-card">
+            <div class="tier-pips"><span class="tier-pip is-on"></span><span class="tier-pip is-on"></span><span class="tier-pip is-on"></span><span class="tier-pip"></span></div>
+            <h3 class="display-title" style="font-size: 2rem;">Tier 03 · Challenging</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-soft);">High-altitude Himalayan passes above 4,500m and multi-pitch granite rock climbs backed by 8-week conditioning plans.</p>
+          </article>
+          <article class="glass-card tier-card">
+            <div class="tier-pips"><span class="tier-pip is-on"></span><span class="tier-pip is-on"></span><span class="tier-pip is-on"></span><span class="tier-pip is-on"></span></div>
+            <h3 class="display-title" style="font-size: 2rem;">Tier 04 · Extreme</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-soft);">15,000 ft open-door skydives, heli-dropped alpine bivouacs, and technical ridge pushes under strict aviation weather telemetry.</p>
+          </article>
+        </div>
+
+        <div class="glass-card" style="margin-top: 2.5rem; padding: clamp(1.8rem, 3.5vw, 2.8rem); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;">
+          <div>
+            <span class="coord-tag">READY TO PAIR DISCIPLINES?</span>
+            <h3 class="display-title" style="font-size: clamp(2.1rem, 4vw, 3.4rem); margin-top: 0.35rem;">BROWSE CURATED <span class="serif-accent">2027 Packages</span></h3>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.85rem;">
+            <a href="packages.html" class="btn btn-primary magnetic"><span>View All Packages</span><span class="btn-arrow" aria-hidden="true">→</span></a>
+            <a href="destinations.html" class="btn btn-outline magnetic"><span>Explore Destinations</span><span class="btn-arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script defer src="assets/meridian.js"></script>
+  <script>
+    document.addEventListener('meridian:ready', () => {
+      const grid = document.getElementById('advCatalogGrid');
+      const countTag = document.getElementById('advCountTag');
+      const adventures = window.MERIDIAN_DATA.adventures;
+
+      grid.innerHTML = adventures.map((a) => `
+        <article class="glass-card adv-detail-card reveal-card" id="${a.id}" data-terrain="${a.terrain}">
+          <div class="adv-detail-media media-frame" style="background-color: ${a.tint};">
+            <div class="adv-detail-badges">
+              <span class="glass-pill">${a.location}</span>
+              <span class="glass-pill" style="background: rgba(245, 229, 165, 0.92);">From ${a.price}</span>
+            </div>
+            <img src="${a.image}" alt="${a.category} in ${a.location}" loading="lazy" width="1100" height="700" data-fallback-title="${a.category.toUpperCase()}" data-fallback-bg="${a.tint}" />
+          </div>
+          <div class="adv-detail-body">
+            <div>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
+                <span class="coord-tag" style="color: var(--charcoal-muted);">${a.coords}</span>
+                <span class="glass-pill" style="background: rgba(255, 225, 206, 0.85);">${a.difficulty}</span>
+              </div>
+              <h2 class="display-title" style="font-size: clamp(2.1rem, 3.2vw, 2.9rem); margin-top: 0.4rem;">${a.category}</h2>
+              <p style="margin-top: 0.55rem; font-size: 0.95rem; color: var(--charcoal-soft);">${a.tagline}</p>
+              <p style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--charcoal-muted);">INCLUDED KIT · ${a.gear}</p>
+            </div>
+            <div>
+              <div class="adv-spec-strip">
+                <div class="adv-spec-cell">Duration<strong>${a.duration}</strong></div>
+                <div class="adv-spec-cell">Envelope<strong>${a.altitude}</strong></div>
+                <div class="adv-spec-cell">Difficulty<strong>${a.difficulty}</strong></div>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-top: 1rem;">
+                <a href="packages.html" style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; text-transform: uppercase; border-bottom: 1.5px solid var(--charcoal); padding-bottom: 0.15rem;">See Departures ↗</a>
+                <button type="button" class="btn btn-primary magnetic" style="padding: 0.65rem 1.25rem; font-size: 0.84rem;" data-open-booking="${a.category} — ${a.location}">
+                  <span>Plan Discipline</span><span class="btn-arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      window.MERIDIAN_UI.attachImageHandlers(grid);
+
+      document.getElementById('advFilterChips').addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-adv-filter]');
+        if (!btn) return;
+        const f = btn.dataset.advFilter;
+        document.querySelectorAll('#advFilterChips .filter-chip').forEach((c) => c.classList.toggle('is-active', c === btn));
+        let shown = 0;
+        grid.querySelectorAll('.adv-detail-card').forEach((card) => {
+          const match = f === 'all' || card.dataset.terrain === f;
+          card.classList.toggle('is-hidden', !match);
+          if (match) shown++;
+        });
+        countTag.textContent = `SHOWING ${String(shown).padStart(2, '0')} OF 08 DISCIPLINES`;
+        window.MERIDIAN_UI.refreshScroll();
+      });
+    });
+  </script>
+</body>
+</html>

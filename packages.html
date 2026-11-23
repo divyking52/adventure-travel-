@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse curated 2027 MERIDIAN adventure expedition packages with live pricing calculators, itineraries, and small-group departures." />
+  <title>Packages — MERIDIAN Expeditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/meridian.css" />
+  <style>
+    .controls-glass-panel {
+      padding: 1.25rem 1.45rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+    .budget-control {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+    }
+    .budget-control input[type="range"] {
+      accent-color: var(--charcoal);
+      width: 150px;
+      cursor: pointer;
+    }
+    .pkg-page-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+    .pkg-full-card { display: flex; flex-direction: column; }
+    .pkg-full-card.is-hidden { display: none; }
+    .pkg-full-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+    .pkg-full-card:hover .pkg-full-media img { transform: scale(1.07); }
+    .pkg-full-body {
+      position: relative; z-index: 2; padding: 1.55rem;
+      display: flex; flex-direction: column; gap: 0.95rem; flex: 1; justify-content: space-between;
+    }
+    .pkg-spec-row {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem;
+      padding: 0.8rem 0; border-top: 1px solid var(--ink-border); border-bottom: 1px solid var(--ink-border);
+      font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; color: var(--charcoal-muted);
+    }
+    .pkg-spec-row strong { display: block; margin-top: 0.16rem; font-family: var(--font-sans); font-size: 0.86rem; text-transform: none; color: var(--charcoal); }
+    .included-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; }
+    .included-card { padding: 1.65rem 1.45rem; display: flex; flex-direction: column; gap: 0.65rem; }
+    @media (max-width: 980px) {
+      .pkg-page-grid { grid-template-columns: 1fr; }
+      .included-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) { .included-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body data-page="packages">
+  <main id="main-content">
+    <section class="page-hero" data-cursor-theme="light">
+      <div class="page-hero-bg media-frame">
+        <img
+          src="https://images.unsplash.com/photo-1723451150476-e7ad125d9054?auto=format&fit=crop&w=1920&q=85"
+          alt="Matterhorn alpine peak reflected across still glacial waters in Switzerland"
+          fetchpriority="high"
+          width="1920"
+          height="1080"
+          data-fallback-title="CURATED PACKAGES"
+          data-fallback-bg="#C6E5D1"
+        />
+      </div>
+      <div class="page-hero-scrim" aria-hidden="true"></div>
+      <div class="container">
+        <div class="page-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span>03 // Curated 2027 Departures</span>
+            <h1 class="page-hero-title">FEATURED <span class="serif-accent">Packages</span></h1>
+            <p class="page-hero-sub">
+              Intimate small-group itineraries capped at 6 to 10 explorers — complete with certified mountain &amp; marine leads, boutique basecamps, technical safety kit, and flexible weather windows.
+            </p>
+          </div>
+          <div class="page-hero-meta">
+            <span class="coord-tag" style="color: var(--butter);">06 SIGNATURE EXPEDITIONS</span>
+            <span style="font-size: 0.9rem; color: var(--cream);">From $590 · All Technical Gear</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; opacity: 0.8;">FREE DATE TRANSFER UP TO 30D</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band section-band-rounded mesh-mint">
+      <div class="outlined-watermark" style="top: 3%; left: 50%; transform: translateX(-50%); font-size: clamp(6rem, 18vw, 17rem);" data-parallax-x="-100" aria-hidden="true">EXPEDITIONS</div>
+      <div class="container">
+        <div class="glass-card controls-glass-panel">
+          <div class="filter-chips" id="pkgPageFilters" role="group" aria-label="Filter packages by category">
+            <button type="button" class="filter-chip is-active" data-pf="all">All (06)</button>
+            <button type="button" class="filter-chip" data-pf="mountain">Alpine &amp; Trek</button>
+            <button type="button" class="filter-chip" data-pf="air">Air &amp; Sky</button>
+            <button type="button" class="filter-chip" data-pf="water">Water &amp; Reef</button>
+            <button type="button" class="filter-chip" data-pf="desert">Desert</button>
+          </div>
+          <div class="budget-control">
+            <label for="budgetRange">Max Budget: <strong id="budgetVal">$2,500</strong></label>
+            <input id="budgetRange" type="range" min="600" max="2500" step="100" value="2500" />
+          </div>
+        </div>
+
+        <div class="pkg-page-grid reveal-grid" id="pkgPageGrid"></div>
+      </div>
+    </section>
+
+    <section class="section-band mesh-cream">
+      <div class="container">
+        <div class="section-header-split">
+          <div>
+            <span class="eyebrow"><span class="eyebrow-dot"></span>Zero Hidden Fees</span>
+            <h2 class="display-title section-heading">EVERY DEPARTURE <span class="serif-accent">Includes</span></h2>
+          </div>
+          <p class="section-intro">Step off the plane ready to move — we engineer every permit, camp meal, technical harness, and satellite safety protocol behind the scenes.</p>
+        </div>
+
+        <div class="included-grid">
+          <article class="glass-card included-card">
+            <span class="coord-tag">01 // LEADERSHIP</span>
+            <h3 class="display-title" style="font-size: 1.95rem;">Certified Guides</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-soft);">IFMGA mountaineers, IRF whitewater guides, PADI divemasters, and licensed pilots on every route.</p>
+          </article>
+          <article class="glass-card included-card">
+            <span class="coord-tag">02 // HARDWARE</span>
+            <h3 class="display-title" style="font-size: 1.95rem;">Pro Technical Kit</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-soft);">Inspected harnesses, helmets, crampons, geodesic tents, wetsuits, and Garmin satellite beacons included.</p>
+          </article>
+          <article class="glass-card included-card">
+            <span class="coord-tag">03 // HOSPITALITY</span>
+            <h3 class="display-title" style="font-size: 1.95rem;">Boutique Basecamps</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-soft);">Chef-crafted high-energy mountain meals, timber alpine lodges, and locally owned wilderness camps.</p>
+          </article>
+          <article class="glass-card included-card">
+            <span class="coord-tag">04 // FLEXIBILITY</span>
+            <h3 class="display-title" style="font-size: 1.95rem;">Private Customization</h3>
+            <p style="font-size: 0.92rem; color: var(--charcoal-soft);">Convert any itinerary into a private departure for 2–8 guests or stitch multiple regions seamlessly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script defer src="assets/meridian.js"></script>
+  <script>
+    document.addEventListener('meridian:ready', () => {
+      const pkgs = window.MERIDIAN_DATA.packages;
+      const grid = document.getElementById('pkgPageGrid');
+      const budgetRange = document.getElementById('budgetRange');
+      const budgetVal = document.getElementById('budgetVal');
+      let currentFilter = 'all';
+
+      grid.innerHTML = pkgs.map((p, idx) => `
+        <article class="glass-card pkg-full-card reveal-card" data-cat="${p.filter}" data-price="${p.priceNum}">
+          <div class="pkg-full-media media-frame" style="background-color: ${p.tint};">
+            <span class="glass-pill" style="position:absolute; top:1rem; left:1rem; z-index:2;">${p.activity}</span>
+            <span class="glass-pill" style="position:absolute; top:1rem; right:1rem; z-index:2; background: rgba(245, 229, 165, 0.94);">From ${p.price}</span>
+            <span class="glass-pill" style="position:absolute; bottom:1rem; left:1rem; z-index:2;">${p.nextDeparture}</span>
+            <img src="${p.image}" alt="${p.title} in ${p.destination}" loading="lazy" width="1200" height="760" data-fallback-title="${p.title.toUpperCase()}" data-fallback-bg="${p.tint}" />
+          </div>
+          <div class="pkg-full-body">
+            <div>
+              <div class="coord-tag" style="color: var(--charcoal-muted);">${p.destination}</div>
+              <h2 class="display-title" style="font-size: clamp(2.1rem, 3.1vw, 2.8rem); margin-top: 0.25rem;">${p.title}</h2>
+              <p style="margin-top: 0.5rem; font-size: 0.94rem; color: var(--charcoal-soft);">${p.desc}</p>
+            </div>
+            <div>
+              <div class="pkg-spec-row">
+                <div>Duration<strong>${p.duration}</strong></div>
+                <div>Difficulty<strong>${p.difficulty}</strong></div>
+                <div>Roster<strong>${p.groupSize}</strong></div>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 1rem;">
+                <button type="button" class="btn btn-outline" style="padding: 0.62rem 1.15rem; font-size: 0.82rem;" data-open-package="${idx}">
+                  <span>Itinerary &amp; Calculator</span>
+                </button>
+                <button type="button" class="btn btn-primary magnetic" style="padding: 0.62rem 1.25rem; font-size: 0.82rem;" data-open-booking="${p.title} — ${p.destination}">
+                  <span>Reserve Spot</span><span class="btn-arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      window.MERIDIAN_UI.attachImageHandlers(grid);
+
+      const applyFilters = () => {
+        const maxP = Number(budgetRange.value);
+        budgetVal.textContent = `$${maxP.toLocaleString()}`;
+        grid.querySelectorAll('.pkg-full-card').forEach((card) => {
+          const catMatch = currentFilter === 'all' || card.dataset.cat === currentFilter;
+          const priceMatch = Number(card.dataset.price) <= maxP;
+          card.classList.toggle('is-hidden', !(catMatch && priceMatch));
+        });
+        window.MERIDIAN_UI.refreshScroll();
+      };
+
+      document.getElementById('pkgPageFilters').addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-pf]');
+        if (!btn) return;
+        currentFilter = btn.dataset.pf;
+        document.querySelectorAll('#pkgPageFilters .filter-chip').forEach((c) => c.classList.toggle('is-active', c === btn));
+        applyFilters();
+      });
+      budgetRange.addEventListener('input', applyFilters);
+    });
+  </script>
+</body>
+</html>
