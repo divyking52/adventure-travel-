@@ -568,51 +568,55 @@
       <footer class="site-footer">
         <div class="container">
           <div class="footer-top-grid">
-            <div>
-              <a href="index.html" class="brand-logo" aria-label="Meridian Home">
-                <span class="brand-mark" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-                    <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.8" />
-                    <polygon points="16,4 19.5,16 16,20 12.5,16" fill="currentColor" />
-                    <polygon points="16,28 19.5,16 16,12 12.5,16" fill="#F2A9A0" />
-                    <circle cx="16" cy="16" r="2.2" fill="currentColor" />
-                  </svg>
-                </span>
-                <span>MERIDIAN</span>
-              </a>
-              <p class="footer-manifesto">An international adventure expedition house designing small-group mountain, air, ocean, and desert journeys for curious explorers.</p>
-              <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--charcoal-soft); display: grid; gap: 0.3rem;">
-                <span>Basecamp HQ · 42 Alpine Crest, Leh &amp; Zurich</span>
-                <span>Desk · expeditions@meridianwild.com</span>
-                <span>Sat-Line · +91 98104 42088 / +41 44 580 2910</span>
+            <div class="footer-brand-col">
+              <div>
+                <a href="index.html" class="brand-logo" aria-label="Meridian Home">
+                  <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+                      <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.8" />
+                      <polygon points="16,4 19.5,16 16,20 12.5,16" fill="currentColor" />
+                      <polygon points="16,28 19.5,16 16,12 12.5,16" fill="#F2A9A0" />
+                      <circle cx="16" cy="16" r="2.2" fill="currentColor" />
+                    </svg>
+                  </span>
+                  <span>MERIDIAN</span>
+                </a>
+                <p class="footer-manifesto">An international adventure expedition house designing small-group mountain, air, ocean, and desert journeys for curious explorers.</p>
+              </div>
+              <div class="footer-contact-meta">
+                <span class="footer-contact-chip">Basecamp HQ · Leh &amp; Zurich</span>
+                <a class="footer-contact-chip" href="mailto:expeditions@meridianwild.com">expeditions@meridianwild.com</a>
+                <a class="footer-contact-chip" href="tel:+919810442088">+91 98104 42088 / +41 44 580 2910</a>
               </div>
             </div>
 
-            <div>
-              <div class="footer-col-title">Explore Pages</div>
+            <details class="footer-col-details" open>
+              <summary class="footer-col-title">Explore Pages <span class="footer-col-count" aria-hidden="true">0${navItems.length}</span></summary>
               <ul class="footer-list">
                 ${navItems.map((n) => `<li><a href="${n.href}">${n.label}</a></li>`).join('')}
               </ul>
-            </div>
+            </details>
 
-            <div>
-              <div class="footer-col-title">Adventures</div>
+            <details class="footer-col-details" open>
+              <summary class="footer-col-title">Adventures <span class="footer-col-count" aria-hidden="true">06</span></summary>
               <ul class="footer-list">
                 ${DATA.adventures.slice(0, 6).map((a) => `<li><a href="adventures.html#${a.id}">${a.category}</a></li>`).join('')}
               </ul>
-            </div>
+            </details>
 
-            <div>
-              <div class="footer-col-title">Destinations</div>
+            <details class="footer-col-details" open>
+              <summary class="footer-col-title">Destinations <span class="footer-col-count" aria-hidden="true">0${DATA.destinations.length}</span></summary>
               <ul class="footer-list">
                 ${DATA.destinations.map((d) => `<li><a href="destinations.html#${d.name.toLowerCase().replace(/\s+/g, '-')}">${d.name}, ${d.country}</a></li>`).join('')}
               </ul>
-            </div>
+            </details>
 
-            <div>
+            <div class="footer-newsletter-col">
               <div class="newsletter-card">
-                <div class="footer-col-title" style="margin-bottom: 0.35rem;">Field Dispatch</div>
-                <p style="font-size: 0.88rem; color: var(--charcoal-soft);">Monthly coordinates, secret departure windows, and seasonal openings.</p>
+                <div>
+                  <div class="footer-col-title" style="margin-bottom: 0.35rem;">Field Dispatch</div>
+                  <p style="font-size: 0.88rem; color: var(--charcoal-soft);">Monthly coordinates, secret departure windows, and seasonal openings.</p>
+                </div>
                 <form class="newsletter-form" id="newsletterForm" novalidate>
                   <label for="newsletterEmail" class="sr-only">Email address</label>
                   <input id="newsletterEmail" class="newsletter-input" type="email" placeholder="explorer@domain.com" autocomplete="email" required />
@@ -628,8 +632,14 @@
 
           <div class="footer-giant-wordmark" aria-hidden="true">MERIDIAN</div>
           <div class="footer-bottom">
-            <span>© 2026 MERIDIAN EXPEDITIONS LTD. ALL RIGHTS RESERVED.</span>
-            <span>LEAVE NO TRACE · CERTIFIED WILDERNESS OPERATOR</span>
+            <div class="footer-bottom-meta">
+              <span>© 2026 MERIDIAN EXPEDITIONS LTD. ALL RIGHTS RESERVED.</span>
+              <span>LEAVE NO TRACE · CERTIFIED WILDERNESS OPERATOR</span>
+            </div>
+            <button type="button" class="footer-top-btn" id="footerBackToTop" aria-label="Back to top of page">
+              <span>Back to Top</span>
+              <span aria-hidden="true">↑</span>
+            </button>
           </div>
         </div>
       </footer>
@@ -867,7 +877,7 @@
       if (b) { openBookingModal(b.dataset.openBooking); return; }
     });
 
-    // Newsletter
+    // Newsletter & Responsive Mobile Footer Accordions
     const nForm = document.getElementById('newsletterForm');
     nForm?.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -882,6 +892,41 @@
       fb.textContent = `Confirmed — coordinates queued for ${val}.`;
       input.value = '';
       showToast('Subscribed to Meridian Field Dispatch!');
+    });
+
+    const footerDetails = Array.from(document.querySelectorAll('.site-footer .footer-col-details'));
+    const footerMobileMq = window.matchMedia('(max-width: 768px)');
+    const syncFooterAccordions = (isMobile) => {
+      footerDetails.forEach((details) => {
+        const summary = details.querySelector(':scope > summary');
+        if (isMobile) {
+          details.open = false;
+          summary?.removeAttribute('tabindex');
+          summary?.removeAttribute('aria-disabled');
+        } else {
+          details.open = true;
+          summary?.setAttribute('tabindex', '-1');
+          summary?.setAttribute('aria-disabled', 'true');
+        }
+      });
+    };
+    footerDetails.forEach((details) => {
+      const summary = details.querySelector(':scope > summary');
+      summary?.addEventListener('click', (e) => {
+        if (!footerMobileMq.matches) e.preventDefault();
+      });
+      details.addEventListener('toggle', () => {
+        window.ScrollTrigger?.refresh();
+        lenisInstance?.resize();
+      });
+    });
+    syncFooterAccordions(footerMobileMq.matches);
+    if (footerMobileMq.addEventListener) footerMobileMq.addEventListener('change', (e) => syncFooterAccordions(e.matches));
+    else if (footerMobileMq.addListener) footerMobileMq.addListener((e) => syncFooterAccordions(e.matches));
+
+    document.getElementById('footerBackToTop')?.addEventListener('click', () => {
+      if (lenisInstance) lenisInstance.scrollTo(0, { duration: 1.1 });
+      else window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     });
 
     // Custom Desktop Magnetic Cursor
